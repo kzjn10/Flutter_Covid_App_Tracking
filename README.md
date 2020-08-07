@@ -19,12 +19,18 @@ Corona virus app UI challenge
 
 [Clean architecture](https://medium.com/@rodrigolmti/clean-architecture-no-flutter-1888c4baa6bc)
 
-# Api reference
+# Resource reference
 
-[Covid API](https://github.com/javieraviles/covidAPI)
-[Freepik.com](https://www.freepik.com/)
-[Pinterest.com](https://www.pinterest.com/)
-[Imgur.com](https://imgur.com/)
+- [Covid API](https://github.com/javieraviles/covidAPI)
+- [Freepik.com](https://www.freepik.com/)
+- [Pinterest.com](https://www.pinterest.com/)
+- [Imgur.com](https://imgur.com/)
+
+# Video demo
+
+- [iPhone 11](https://youtu.be/FUrQREQDcyY)
+- [Pixel 3](https://youtu.be/0DrN5zTWMj8)
+
 
 # Libraries
 
