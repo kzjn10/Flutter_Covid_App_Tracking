@@ -2,7 +2,8 @@
 
 Corona virus app UI challenge
 
-![alt text](https://i.imgur.com/3ocmIBv.png "Resoure")
+[![Screenshot](https://i.imgur.com/3ocmIBv.png)](https://www.youtube.com/watch?v=FUrQREQDcyY)
+
 
 # What will you learn
 
