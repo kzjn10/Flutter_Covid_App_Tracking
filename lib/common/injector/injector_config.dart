@@ -47,7 +47,7 @@ abstract class InjectorConfig {
   @Register.factory(CoronaUseCase)
   void _configureUseCases();
 
-  @Register.factory(MovieRepositoryImpl)
+  @Register.factory(CoronaRepositoryImpl)
   void _configureRepositories();
 
   @Register.factory(CoronaRemoteDataSource)

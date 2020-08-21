@@ -12,7 +12,7 @@ part 'corona_state.dart';
 class CoronaBloc extends Bloc<CoronaEvent, CoronaState> {
   final CoronaUseCase coronaUseCase;
 
-  CoronaBloc({this.coronaUseCase}) : super(InitMovieState());
+  CoronaBloc({this.coronaUseCase}) : super(InitState());
 
   @override
   Stream<CoronaState> mapEventToState(CoronaEvent event) async* {

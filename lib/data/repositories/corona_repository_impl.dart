@@ -5,16 +5,16 @@ import 'package:corona_virus_app/domain/entities/report_entity.dart';
 import 'package:corona_virus_app/domain/entities/summary_entity.dart';
 import 'package:corona_virus_app/domain/repositories/corona_repository.dart';
 
-class MovieRepositoryImpl extends CoronaRepository {
+class CoronaRepositoryImpl extends CoronaRepository {
   final NetworkInfoImpl networkInfo;
-  final CoronaRemoteDataSource movieRemoteDataSource;
+  final CoronaRemoteDataSource coronaRemoteDataSource;
 
-  MovieRepositoryImpl(this.networkInfo, this.movieRemoteDataSource);
+  CoronaRepositoryImpl(this.networkInfo, this.coronaRemoteDataSource);
 
   @override
   Future<List<ReportEntity>> getReportData() async {
     if (await networkInfo.isConnected) {
-      return movieRemoteDataSource.getReportData();
+      return coronaRemoteDataSource.getReportData();
     }
     throw NetworkConnectionException();
   }
@@ -22,7 +22,7 @@ class MovieRepositoryImpl extends CoronaRepository {
   @override
   Future<SummaryEntity> getSummary() async {
     if (await networkInfo.isConnected) {
-      return movieRemoteDataSource.getSummary();
+      return coronaRemoteDataSource.getSummary();
     }
     throw NetworkConnectionException();
   }

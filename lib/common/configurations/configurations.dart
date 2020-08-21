@@ -1,10 +1,8 @@
-import 'default_env.dart';
-
 class Configurations {
-  static String _host = DefaultConfig.host;
+  static String _host = '';
 
   Future<void> setConfigurationValues(Map<String, dynamic> value) async {
-    _host = value['host'] ?? DefaultConfig.host;
+    _host = value['host'] ?? '';
   }
 
   static String get host => _host;

@@ -17,13 +17,13 @@ class _$InjectorConfig extends InjectorConfig {
   void _configureUseCases() {
     final KiwiContainer container = KiwiContainer();
     container.registerFactory(
-        (c) => CoronaUseCase(coronaRepository: c<MovieRepositoryImpl>()));
+        (c) => CoronaUseCase(coronaRepository: c<CoronaRepositoryImpl>()));
   }
 
   void _configureRepositories() {
     final KiwiContainer container = KiwiContainer();
-    container.registerFactory((c) =>
-        MovieRepositoryImpl(c<NetworkInfoImpl>(), c<CoronaRemoteDataSource>()));
+    container.registerFactory((c) => CoronaRepositoryImpl(
+        c<NetworkInfoImpl>(), c<CoronaRemoteDataSource>()));
   }
 
   void _configureDataSources() {

@@ -2,7 +2,7 @@ part of 'corona_bloc.dart';
 
 abstract class CoronaState {}
 
-class InitMovieState extends CoronaState {}
+class InitState extends CoronaState {}
 
 class FetchReportState extends CoronaState {}
 
