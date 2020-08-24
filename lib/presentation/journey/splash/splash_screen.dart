@@ -45,8 +45,8 @@ class _SplashScreenState extends BaseStateWidget<SplashScreen> {
           Container(
             color: AppColor.splashBackgroundColor,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 50, bottom: 150),
+          const Padding(
+            padding: EdgeInsets.only(left: 50, bottom: 150),
             child: FlareActor(
               GraphicConstants.coronaVirus,
               alignment: Alignment.center,

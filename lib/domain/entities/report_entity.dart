@@ -43,4 +43,16 @@ class ReportEntity {
     data['testsPerOneMillion'] = testsPerOneMillion;
     return data;
   }
+
+  double getCurrentInfectedPercent() {
+    return active / cases * 100;
+  }
+
+  double getRecoveriesPercent() {
+    return recovered / cases * 100;
+  }
+
+  double getDeathPercent() {
+    return deaths / cases * 100;
+  }
 }

@@ -18,7 +18,7 @@ class ContentErrorWidget extends StatelessWidget {
         Container(
           width: 150,
           height: 150,
-          child: FlareActor(
+          child: const FlareActor(
             GraphicConstants.coronaVirus,
             alignment: Alignment.center,
             fit: BoxFit.contain,

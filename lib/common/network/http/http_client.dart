@@ -16,7 +16,7 @@ class HttpClient {
   }
 
   Uri _getParsedUrl(String path) {
-    return Uri.parse(path);
+    return Uri.parse('$host$path');
   }
 
   dynamic get(String path) async {

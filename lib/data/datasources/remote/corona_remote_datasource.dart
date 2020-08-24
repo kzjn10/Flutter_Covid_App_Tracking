@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:corona_virus_app/data/models/report_model.dart';
 import 'package:corona_virus_app/common/network/http/corona_client.dart';
 import 'package:corona_virus_app/data/datasources/remote/constants/remote_constants.dart';
-import 'package:corona_virus_app/data/models/report_model.dart';
-import 'package:corona_virus_app/data/models/summary_model.dart';
 
 class CoronaRemoteDataSource {
   final CoronaClient coronaClient;
@@ -20,8 +19,13 @@ class CoronaRemoteDataSource {
     return data;
   }
 
-  Future<SummaryModel> getSummary() async {
-    final response = await coronaClient.get(RemoteConstants.summary);
-    return SummaryModel.fromJson(response);
+  Future<ReportModel> getSummary() async {
+    final response = await coronaClient.get(RemoteConstants.world);
+    return ReportModel.fromJson(response);
+  }
+
+  Future<ReportModel> getLocalReport() async {
+    final response = await coronaClient.get(RemoteConstants.local);
+    return ReportModel.fromJson(response);
   }
 }

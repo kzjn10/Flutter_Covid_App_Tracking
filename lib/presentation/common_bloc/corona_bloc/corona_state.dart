@@ -17,7 +17,7 @@ class FetchSummaryState extends CoronaState {}
 class FailToLoadReportState extends CoronaState {}
 
 class LoadedSummaryState extends CoronaState {
-  final SummaryEntity summary;
+  final ReportEntity summary;
 
   LoadedSummaryState({this.summary});
 }

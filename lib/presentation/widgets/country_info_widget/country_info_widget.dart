@@ -8,6 +8,7 @@ import 'package:corona_virus_app/common/internationalization.dart';
 import 'package:corona_virus_app/domain/entities/report_entity.dart';
 import 'package:corona_virus_app/presentation/theme/theme_color.dart';
 import 'package:corona_virus_app/common/constants/graphic_constants.dart';
+import 'package:corona_virus_app/common/extensions/number_extensions.dart';
 import 'package:corona_virus_app/presentation/widgets/info_widget/info_widget.dart';
 import 'package:corona_virus_app/presentation/common_bloc/corona_bloc/corona_bloc.dart';
 import 'package:corona_virus_app/presentation/widgets/custom_card_widget/custom_card_widget.dart';
@@ -107,14 +108,14 @@ class _CountryInfoWidgetState extends State<CountryInfoWidget> {
               Expanded(
                 child: InfoWidget(
                   title: i18n.translate('homeScreen.headline.newCases'),
-                  value: '${data.todayCases}',
+                  value: '${data.todayCases.toFormattedValue()}',
                   valueColor: AppColor.carnation,
                 ),
               ),
               Expanded(
                 child: InfoWidget(
                   title: i18n.translate('homeScreen.headline.newDeaths'),
-                  value: '${data.todayDeaths}',
+                  value: '${data.todayDeaths.toFormattedValue()}',
                   valueColor: AppColor.highlightColor,
                 ),
               )
@@ -131,28 +132,28 @@ class _CountryInfoWidgetState extends State<CountryInfoWidget> {
               Expanded(
                 child: InfoWidget.extend(
                   title: i18n.translate('homeScreen.headline.case'),
-                  value: '${data.cases}',
+                  value: '${data.cases.toFormattedValue()}',
                   valueColor: AppColor.carnation,
                 ),
               ),
               Expanded(
                 child: InfoWidget.extend(
                   title: i18n.translate('homeScreen.headline.totalRecoveries'),
-                  value: '${data.recovered}',
+                  value: '${data.recovered.toFormattedValue()}',
                   valueColor: AppColor.chartGreen,
                 ),
               ),
               Expanded(
                 child: InfoWidget.extend(
                   title: i18n.translate('homeScreen.headline.active'),
-                  value: '${data.active}',
+                  value: '${data.active.toFormattedValue()}',
                   valueColor: AppColor.chartBlue,
                 ),
               ),
               Expanded(
                 child: InfoWidget.extend(
                   title: i18n.translate('homeScreen.headline.totalDeaths'),
-                  value: '${data.deaths}',
+                  value: '${data.deaths.toFormattedValue()}',
                   valueColor: AppColor.highlightColor,
                 ),
               ),

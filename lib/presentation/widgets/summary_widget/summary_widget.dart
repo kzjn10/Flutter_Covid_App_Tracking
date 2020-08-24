@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:corona_virus_app/common/injector/injector.dart';
 import 'package:corona_virus_app/common/internationalization.dart';
-import 'package:corona_virus_app/domain/entities/global_entity.dart';
-import 'package:corona_virus_app/domain/entities/summary_entity.dart';
+import 'package:corona_virus_app/domain/entities/report_entity.dart';
 import 'package:corona_virus_app/presentation/theme/theme_color.dart';
 import 'package:corona_virus_app/common/constants/graphic_constants.dart';
+import 'package:corona_virus_app/common/extensions/number_extensions.dart';
 import 'package:corona_virus_app/presentation/widgets/info_widget/info_widget.dart';
 import 'package:corona_virus_app/presentation/common_bloc/corona_bloc/corona_bloc.dart';
 import 'package:corona_virus_app/presentation/widgets/indicator_widget/indicator_widget.dart';
@@ -66,7 +65,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
     );
   }
 
-  Widget _buildContentWidget(BuildContext context, SummaryEntity data) {
+  Widget _buildContentWidget(BuildContext context, ReportEntity data) {
     final i18n = S.of(context);
 
     return Column(
@@ -97,16 +96,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
         SizedBox(height: 20.h),
         _buildOverviewInfoWidget(context, data),
         _buildPieChartWidget(context, data),
-        SizedBox(height: 20.h),
-        Text(
-          i18n.translate('homeScreen.message.updatedTime',
-              params: [data?.global?.lastUpdate ?? '']),
-          style: Theme.of(context).textTheme.headline4.copyWith(
-                fontSize: 12,
-                color: AppColor.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
+        SizedBox(height: 40.h),
       ],
     );
   }
@@ -131,7 +121,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
     );
   }
 
-  Widget _buildPieChartWidget(BuildContext context, SummaryEntity data) {
+  Widget _buildPieChartWidget(BuildContext context, ReportEntity data) {
     final i18n = S.of(context);
     return AnimatedBuilder(
       animation: _touchIndexNotifier,
@@ -159,7 +149,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                           borderData: FlBorderData(show: false),
                           sectionsSpace: 0,
                           centerSpaceRadius: 35,
-                          sections: showingSections(data.global)),
+                          sections: showingSections(data)),
                     ),
                   ),
                 ),
@@ -200,7 +190,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
     );
   }
 
-  List<PieChartSectionData> showingSections(GlobalEntity data) {
+  List<PieChartSectionData> showingSections(ReportEntity data) {
     final currentInfectedPercent = data.getCurrentInfectedPercent();
     final currentRecoveriesPercent = data.getRecoveriesPercent();
     final currentDeathPercent = data.getDeathPercent();
@@ -242,7 +232,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
     });
   }
 
-  Widget _buildOverviewInfoWidget(BuildContext context, SummaryEntity data) {
+  Widget _buildOverviewInfoWidget(BuildContext context, ReportEntity data) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20.h),
       child: Column(
@@ -251,7 +241,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
         children: <Widget>[
           InfoWidget(
             title: 'homeScreen.headline.totalConfirmed',
-            value: '${data?.getFormattedTotalCase() ?? '--'}',
+            value: '${data.cases.toFormattedValue()}',
             maxFontSize: 50,
             valueColor: AppColor.carnation,
           ),
@@ -261,14 +251,14 @@ class _SummaryWidgetState extends State<SummaryWidget> {
               Expanded(
                 child: InfoWidget(
                   title: 'homeScreen.headline.totalDeaths',
-                  value: '${data?.getFormattedTotalDeaths() ?? '--'}',
+                  value: '${data.deaths.toFormattedValue()}',
                   valueColor: AppColor.highlightColor,
                 ),
               ),
               Expanded(
                 child: InfoWidget(
                   title: 'homeScreen.headline.totalRecoveries',
-                  value: '${data?.getFormattedTotalRecoveries() ?? '--'}',
+                  value: '${data.recovered.toFormattedValue()}',
                   valueColor: AppColor.chartGreen,
                 ),
               ),
@@ -281,35 +271,33 @@ class _SummaryWidgetState extends State<SummaryWidget> {
 
   Widget _buildLoadingOverviewInfoWidget() {
     final screenWidth = MediaQuery.of(context).size.width;
-    return CustomCardWidget(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            LoadingInfoWidget(
-              valueHeight: 60,
-              valueWidth: screenWidth * .8,
-              titleWidth: screenWidth * .6,
-            ),
-            SizedBox(height: 30.h),
-            Row(
-              children: <Widget>[
-                Expanded(
-                    child: LoadingInfoWidget(
-                  valueWidth: screenWidth * .35,
-                  titleWidth: screenWidth * .3,
-                )),
-                Expanded(
-                    child: LoadingInfoWidget(
-                  valueWidth: screenWidth * .4,
-                  titleWidth: screenWidth * .25,
-                )),
-              ],
-            ),
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          LoadingInfoWidget(
+            valueHeight: 60,
+            valueWidth: screenWidth * .8,
+            titleWidth: screenWidth * .6,
+          ),
+          SizedBox(height: 30.h),
+          Row(
+            children: <Widget>[
+              Expanded(
+                  child: LoadingInfoWidget(
+                valueWidth: screenWidth * .35,
+                titleWidth: screenWidth * .3,
+              )),
+              Expanded(
+                  child: LoadingInfoWidget(
+                valueWidth: screenWidth * .4,
+                titleWidth: screenWidth * .25,
+              )),
+            ],
+          ),
+        ],
       ),
     );
   }

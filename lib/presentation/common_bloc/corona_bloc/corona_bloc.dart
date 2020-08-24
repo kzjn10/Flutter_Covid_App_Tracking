@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:corona_virus_app/domain/entities/report_entity.dart';
-import 'package:corona_virus_app/domain/entities/summary_entity.dart';
 import 'package:corona_virus_app/domain/usecases/corona_usecase.dart';
 
 part 'corona_event.dart';

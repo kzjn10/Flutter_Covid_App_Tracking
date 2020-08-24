@@ -1,5 +1,4 @@
 import 'package:corona_virus_app/domain/entities/report_entity.dart';
-import 'package:corona_virus_app/domain/entities/summary_entity.dart';
 import 'package:corona_virus_app/domain/repositories/corona_repository.dart';
 
 class CoronaUseCase {
@@ -7,7 +6,7 @@ class CoronaUseCase {
 
   CoronaUseCase({this.coronaRepository});
 
-  Future<SummaryEntity> getSummary() async {
+  Future<ReportEntity> getSummary() async {
     return coronaRepository.getSummary();
   }
 
