@@ -1,3 +1,5 @@
+import 'package:corona_virus_app/domain/entities/country_info_entity.dart';
+
 class ReportEntity {
   String country;
   int cases;
@@ -7,10 +9,12 @@ class ReportEntity {
   int recovered;
   int active;
   int critical;
-  int casesPerOneMillion;
-  int deathsPerOneMillion;
+  double casesPerOneMillion;
+  double deathsPerOneMillion;
   int totalTests;
-  int testsPerOneMillion;
+  double testsPerOneMillion;
+  int updated;
+  CountryInfoEntity countryInfo;
 
   ReportEntity({
     this.country,
@@ -25,6 +29,8 @@ class ReportEntity {
     this.deathsPerOneMillion,
     this.totalTests,
     this.testsPerOneMillion,
+    this.updated,
+    this.countryInfo,
   });
 
   Map<String, dynamic> toJson() {
@@ -41,6 +47,8 @@ class ReportEntity {
     data['deathsPerOneMillion'] = deathsPerOneMillion;
     data['totalTests'] = totalTests;
     data['testsPerOneMillion'] = testsPerOneMillion;
+    data['updated'] = updated;
+    data['countryInfo'] = countryInfo.toJson();
     return data;
   }
 

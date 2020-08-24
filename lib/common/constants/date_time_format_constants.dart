@@ -7,4 +7,5 @@ class DateTimeFormatConstants {
   static const timeHHmmssFormatVI = 'HH.mm.ss';
   static const timeHHmmssFormatEN = 'HH:mm:ss';
   static const yyyyMMdd = 'yyyy-MM-dd';
+  static const full = 'HH:mm:ss dd/MM/yyyy';
 }

@@ -1,5 +1,5 @@
 class RemoteConstants {
-  static const world = 'countries/World';
-  static const report = 'countries';
-  static const local = 'countries/vietnam';
+  static const world = 'all';
+  static const report = 'countries?sort=cases';
+  static const local = 'countries/VN?strict=true';
 }
