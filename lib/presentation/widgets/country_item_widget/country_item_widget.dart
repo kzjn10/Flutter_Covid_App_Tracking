@@ -1,3 +1,4 @@
+import 'package:corona_virus_app/presentation/widgets/image_network_widget/image_network_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,14 +27,30 @@ class CountryItemWidget extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 3,
-            child: Text(
-              data?.country ?? '',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.button.copyWith(
-                    fontSize: 14,
-                    color: AppColor.primaryColor,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: ImageNetworkWidget(
+                    width: 15,
+                    height: 15,
+                    imageUrl: '${data.countryInfo?.flag ?? ''}',
                   ),
+                ),
+                const SizedBox(width: 5),
+                Expanded(
+                  child: Text(
+                    data?.country ?? '',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.button.copyWith(
+                          fontSize: 14,
+                          color: AppColor.primaryColor,
+                        ),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(

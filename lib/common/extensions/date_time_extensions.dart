@@ -75,5 +75,9 @@ extension DateTimeExt on DateTime {
         .format(this);
   }
 
+  String toStringFormat({String languageCode = 'VI'}) {
+    return DateFormat(DateTimeFormatConstants.full, languageCode).format(this);
+  }
+
   DateTime getDateOnly() => DateTime(year, month, day);
 }

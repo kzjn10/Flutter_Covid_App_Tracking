@@ -23,6 +23,7 @@ Corona virus app UI challenge
 # Resource reference
 
 - [Covid API](https://github.com/javieraviles/covidAPI)
+- [Covid API 2](https://vi.wordpress.org/plugins/corona-virus-data/)
 - [Freepik.com](https://www.freepik.com/)
 - [Pinterest.com](https://www.pinterest.com/)
 - [Imgur.com](https://imgur.com/)

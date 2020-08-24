@@ -23,7 +23,7 @@
 
   "homeScreen.message.contact": "Gọi số 1900.90.95 khi bạn có các triệu chứng trên hoặc nghi ngờ có tiếp xúc với người bệnh. Cùng chung tay đẩy lùi COVID-19 bạn nhé.",
   "homeScreen.message.conclusion": "Let's fight COVID-19 together",
-  "homeScreen.message.updatedTime": "Cập nhật lần cuối lúc: %s",
+  "homeScreen.message.updatedTime": "Cập nhật lúc: %s",
 
   "common.message.connectionError": "Kết nối mạng lỗi, Chạm để thử lại.",
   "common.message.UnknownError": "Đã có lỗi xảy ra, vui lòng thử lại."

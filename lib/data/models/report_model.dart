@@ -1,3 +1,4 @@
+import 'package:corona_virus_app/data/models/country_info_model.dart';
 import 'package:corona_virus_app/domain/entities/report_entity.dart';
 
 class ReportModel extends ReportEntity {
@@ -10,10 +11,12 @@ class ReportModel extends ReportEntity {
     int recovered,
     int active,
     int critical,
-    int casesPerOneMillion,
-    int deathsPerOneMillion,
+    double casesPerOneMillion,
+    double deathsPerOneMillion,
     int totalTests,
-    int testsPerOneMillion,
+    double testsPerOneMillion,
+    int updated,
+    CountryInfoModel countryInfo,
   }) : super(
           country: country,
           cases: cases,
@@ -27,6 +30,8 @@ class ReportModel extends ReportEntity {
           deathsPerOneMillion: deathsPerOneMillion,
           totalTests: totalTests,
           testsPerOneMillion: testsPerOneMillion,
+          updated: updated,
+          countryInfo: countryInfo,
         );
 
   ReportModel.fromJson(Map<String, dynamic> json) {
@@ -38,9 +43,13 @@ class ReportModel extends ReportEntity {
     recovered = json['recovered'];
     active = json['active'];
     critical = json['critical'];
-    casesPerOneMillion = json['casesPerOneMillion'];
-    deathsPerOneMillion = json['deathsPerOneMillion'];
+    casesPerOneMillion = (json['casesPerOneMillion'] ?? 0).toDouble();
+    deathsPerOneMillion = (json['deathsPerOneMillion'] ?? 0).toDouble();
     totalTests = json['totalTests'];
-    testsPerOneMillion = json['testsPerOneMillion'];
+    testsPerOneMillion = (json['testsPerOneMillion'] ?? 0).toDouble();
+    updated = json['updated'];
+    if (json.containsKey('countryInfo')) {
+      countryInfo = CountryInfoModel.fromJson(json['countryInfo']);
+    }
   }
 }

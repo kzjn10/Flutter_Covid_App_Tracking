@@ -10,6 +10,7 @@ import 'package:corona_virus_app/domain/entities/report_entity.dart';
 import 'package:corona_virus_app/presentation/theme/theme_color.dart';
 import 'package:corona_virus_app/common/constants/graphic_constants.dart';
 import 'package:corona_virus_app/common/extensions/number_extensions.dart';
+import 'package:corona_virus_app/common/extensions/date_time_extensions.dart';
 import 'package:corona_virus_app/presentation/widgets/info_widget/info_widget.dart';
 import 'package:corona_virus_app/presentation/common_bloc/corona_bloc/corona_bloc.dart';
 import 'package:corona_virus_app/presentation/widgets/indicator_widget/indicator_widget.dart';
@@ -67,6 +68,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
 
   Widget _buildContentWidget(BuildContext context, ReportEntity data) {
     final i18n = S.of(context);
+    final lastUpdate =
+        DateTime.fromMillisecondsSinceEpoch(data.updated).toStringFormat();
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -96,7 +99,18 @@ class _SummaryWidgetState extends State<SummaryWidget> {
         SizedBox(height: 20.h),
         _buildOverviewInfoWidget(context, data),
         _buildPieChartWidget(context, data),
-        SizedBox(height: 40.h),
+        SizedBox(height: 30.h),
+        Text(
+          i18n.translate(
+            'homeScreen.message.updatedTime',
+            params: ['$lastUpdate'],
+          ),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: AppColor.blackOpacity5),
+        ),
+        SizedBox(height: 10.h),
       ],
     );
   }

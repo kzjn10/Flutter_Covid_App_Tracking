@@ -55,7 +55,6 @@ class CoronaBloc extends Bloc<CoronaEvent, CoronaState> {
       final reportData = await coronaUseCase.getReport();
 
       if (reportData != null) {
-        reportData.removeAt(0);
         final x = reportData.sublist(0, 10);
         yield LoadedReportState(data: x);
       } else {

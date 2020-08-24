@@ -1,3 +1,3 @@
 class Configurations {
-  static String get host => 'https://coronavirus-19-api.herokuapp.com/';
+  static String get host => 'https://disease.sh/v3/covid-19/';
 }
