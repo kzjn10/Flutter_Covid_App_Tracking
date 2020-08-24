@@ -1,4 +1,3 @@
-import 'package:corona_virus_app/presentation/widgets/image_network_widget/image_network_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:corona_virus_app/presentation/theme/theme_color.dart';
 import 'package:corona_virus_app/domain/entities/report_entity.dart';
 import 'package:corona_virus_app/common/extensions/number_extensions.dart';
+import 'package:corona_virus_app/presentation/widgets/image_network_widget/image_network_widget.dart';
 
 class CountryItemWidget extends StatelessWidget {
   final ReportEntity data;
